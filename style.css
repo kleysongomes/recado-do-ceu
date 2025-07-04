@@ -1,0 +1,130 @@
+/* Configurações gerais e reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    
+    /* Novo layout para organizar header, main e footer verticalmente */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Empurra o header para cima e o footer para baixo */
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    
+    /* O gradiente animado! */
+    background: linear-gradient(135deg, #6e45e2, #88d3ce, #ff758c, #ffae8b);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+/* Animação que move o fundo gradiente */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- NOVO CABEÇALHO --- */
+.page-header {
+    text-align: center;
+    margin-bottom: 20px; /* Espaço entre o cabeçalho e o cartão */
+}
+
+.logo {
+    max-width: 100px; /* Tamanho da logo */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.page-header p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Conteúdo principal */
+.container {
+    width: 100%;
+    max-width: 600px;
+}
+
+/* O cartão que contém a mensagem */
+.message-card {
+    text-align: center;
+    padding: 40px 30px;
+    
+    /* Efeito de "vidro" (Glassmorphism) */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+
+    /* Animação de surgimento do cartão */
+    animation: fadeIn 1.5s ease-out forwards;
+    opacity: 0; /* Começa invisível para a animação funcionar */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Texto introdutório "Um recado do Céu..." */
+.intro-text {
+    font-size: 1.1rem;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-bottom: 15px;
+}
+
+/* A frase principal, bem destacada */
+#divine-message {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.4;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+/* --- NOVO RODAPÉ --- */
+.page-footer {
+    text-align: center;
+    margin-top: 20px; /* Espaço entre o cartão e o rodapé */
+}
+
+.page-footer p {
+    font-size: 0.8rem;
+    font-weight: 400;
+    opacity: 0.8;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 480px) {
+    .message-card {
+        padding: 30px 20px;
+    }
+
+    .intro-text {
+        font-size: 1rem;
+    }
+
+    #divine-message {
+        font-size: 1.8rem;
+    }
+}
