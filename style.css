@@ -8,36 +8,33 @@
 body {
     font-family: 'Poppins', sans-serif;
     color: #fff;
-    
-    /* Novo layout para organizar header, main e footer verticalmente */
+
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Empurra o header para cima e o footer para baixo */
+    justify-content: space-between;
     align-items: center;
     min-height: 100vh;
     padding: 20px;
-    
-    /* O gradiente animado! */
+
     background: linear-gradient(135deg, #6e45e2, #88d3ce, #ff758c, #ffae8b);
     background-size: 400% 400%;
     animation: gradientAnimation 15s ease infinite;
 }
 
-/* Animação que move o fundo gradiente */
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* --- NOVO CABEÇALHO --- */
+/* Cabeçalho */
 .page-header {
     text-align: center;
-    margin-bottom: 20px; /* Espaço entre o cabeçalho e o cartão */
+    margin-bottom: 20px;
 }
 
 .logo {
-    max-width: 100px; /* Tamanho da logo */
+    max-width: 100px;
     height: auto;
     margin-bottom: 10px;
 }
@@ -48,28 +45,23 @@ body {
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
-
-/* Conteúdo principal */
+/* Container */
 .container {
     width: 100%;
     max-width: 600px;
 }
 
-/* O cartão que contém a mensagem */
+/* Cartão da mensagem */
 .message-card {
     text-align: center;
     padding: 40px 30px;
-    
-    /* Efeito de "vidro" (Glassmorphism) */
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-
-    /* Animação de surgimento do cartão */
     animation: fadeIn 1.5s ease-out forwards;
-    opacity: 0; /* Começa invisível para a animação funcionar */
+    opacity: 0;
 }
 
 @keyframes fadeIn {
@@ -83,7 +75,7 @@ body {
     }
 }
 
-/* Texto introdutório "Um recado do Céu..." */
+/* Texto introdutório */
 .intro-text {
     font-size: 1.1rem;
     font-weight: 400;
@@ -91,7 +83,7 @@ body {
     margin-bottom: 15px;
 }
 
-/* A frase principal, bem destacada */
+/* Mensagem principal */
 #divine-message {
     font-size: 2.2rem;
     font-weight: 700;
@@ -99,13 +91,94 @@ body {
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-
-/* --- NOVO RODAPÉ --- */
-.page-footer {
-    text-align: center;
-    margin-top: 20px; /* Espaço entre o cartão e o rodapé */
+/* Botão de compartilhar */
+.share-button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    background-color: #ffffff33;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: background-color 0.3s ease;
+}
+.share-button:hover {
+    background-color: #ffffff55;
 }
 
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+.modal.hidden {
+    display: none;
+}
+.modal-content {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    padding: 30px 20px;
+    text-align: center;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow: auto;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+}
+.modal-content img {
+    max-width: 100%;
+    border-radius: 16px;
+    margin-bottom: 20px;
+}
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 1.5rem;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+}
+.share-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+.share-options button {
+    background-color: #ffffff33;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: background-color 0.3s ease;
+}
+.share-options button:hover {
+    background-color: #ffffff55;
+}
+
+/* Rodapé */
+.page-footer {
+    text-align: center;
+    margin-top: 20px;
+}
 .page-footer p {
     font-size: 0.8rem;
     font-weight: 400;
@@ -113,18 +186,29 @@ body {
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
-
-/* --- RESPONSIVIDADE --- */
+/* Responsividade */
 @media (max-width: 480px) {
     .message-card {
         padding: 30px 20px;
     }
-
     .intro-text {
         font-size: 1rem;
     }
-
     #divine-message {
         font-size: 1.8rem;
     }
+    .modal-content {
+        padding: 20px 15px;
+    }
+    .share-options button {
+        width: 100%;
+        font-size: 0.95rem;
+    }
+}
+
+
+.share-button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }

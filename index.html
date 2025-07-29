@@ -15,7 +15,7 @@
 
     <header class="page-header">
         <img src="jaLogo.webp" alt="Logo JA" class="logo">
-        <p>Da equipe JA</p>
+        <p>Jovens Adventistas</p>
     </header>
 
     <main class="container">
@@ -23,12 +23,33 @@
             <p class="intro-text">Um recado do Céu para você:</p>
             <h1 id="divine-message"></h1>
         </div>
+        
+        <div class="share-button-wrapper">
+            <button id="share-btn" class="share-button">Compartilhar</button>
+        </div>
+
+        <div id="share-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <img id="generated-image" alt="Preview da imagem gerada">
+                <div class="share-options">
+                    <button class="share-native">Compartilhar</button>
+                    <button class="copy-btn">Copiar</button>
+                </div>
+            </div>
+        </div>
+
+
     </main>
 
     <footer class="page-footer">
         <p>feito por kleyson com ❤️</p>
     </footer>
-
+    <!-- Biblioteca necessária -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    
     <script src="script.js"></script>
+    <script src="share.js"></script>
+
 </body>
 </html>
