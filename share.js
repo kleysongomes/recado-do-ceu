@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
     shareBtn.addEventListener('click', async () => {
         const card = document.querySelector('.message-card');
 
+        // Cores aleatórias para o fundo da imagem gerada
+        const colors = ['#6e45e2', '#ff6b6b', '#00c9a7', '#2196f3', '#f06292', '#ffae8b', '#8e24aa', '#009688'];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
         // Marca d’água temporária
         const watermark = document.createElement('p');
         watermark.innerText = 'recadodoceu.vercel.app';
@@ -23,14 +27,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Clona o conteúdo do card
         const clone = card.cloneNode(true);
-        clone.style.backgroundColor = '#6e45e2';
-        clone.style.padding = getComputedStyle(card).padding;
-        clone.style.borderRadius = getComputedStyle(card).borderRadius;
-        clone.style.width = getComputedStyle(card).width;
-        clone.style.maxWidth = getComputedStyle(card).maxWidth;
-        clone.style.boxShadow = getComputedStyle(card).boxShadow;
-        clone.style.color = getComputedStyle(card).color;
+        clone.style.backgroundColor = randomColor;
+        clone.style.background = 'none';
+        clone.style.backdropFilter = 'none';
+        clone.style.padding = '40px 30px';
+        clone.style.borderRadius = '20px';
+        clone.style.width = '100%';
+        clone.style.maxWidth = '600px';
+        clone.style.boxShadow = 'none';
+        clone.style.display = 'block';
         clone.style.position = 'relative';
+
+        // Corrige os textos do clone
+        const introText = clone.querySelector('.intro-text');
+        if (introText) {
+            introText.style.color = '#ffffff';
+            introText.style.opacity = '1';
+            introText.style.textShadow = '1px 1px 4px rgba(0,0,0,0.3)';
+        }
+
+        const messageText = clone.querySelector('#divine-message');
+        if (messageText) {
+            messageText.style.color = '#ffffff';
+            messageText.style.opacity = '1';
+            messageText.style.textShadow = '2px 2px 8px rgba(0,0,0,0.4)';
+            messageText.style.fontWeight = '700';
+        }
 
         // Cria a logo (visível no topo)
         const logo = document.createElement('img');
@@ -50,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Cria wrapper (logo + card)
         const wrapper = document.createElement('div');
         Object.assign(wrapper.style, {
-            backgroundColor: '#6e45e2',
+            backgroundColor: randomColor,
             padding: '30px 20px',
             borderRadius: '20px',
             color: '#fff',
@@ -59,10 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
             flexDirection: 'column',
             alignItems: 'center',
             textAlign: 'center',
-            width: getComputedStyle(card).width,
-            maxWidth: getComputedStyle(card).maxWidth
+            width: '100%',
+            maxWidth: '600px'
         });
-
 
         wrapper.appendChild(logo);
         wrapper.appendChild(clone);
@@ -77,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Gera imagem
         const canvas = await html2canvas(wrapper, {
             useCORS: true,
-            backgroundColor: '#6e45e2',
+            backgroundColor: randomColor,
             scale: window.devicePixelRatio
         });
 
