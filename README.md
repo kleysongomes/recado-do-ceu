@@ -37,3 +37,5 @@ Este é um projeto web simples e elegante criado para exibir uma mensagem inspir
 * **Para alterar as cores:** Abra o arquivo `style.css` e modifique as cores na propriedade `background` dentro da regra `body`.
 
 Feito com ❤️
+
+Acesse: https://recadodoceu.vercel.app/
